@@ -6,9 +6,6 @@
 #include <QtNetwork/QTcpSocket>
 #include <QtNetwork/QHostAddress>
 
-
-
-
 class Main : public QObject{
 Q_OBJECT
 public:
@@ -52,6 +49,8 @@ private slots:
         sp.write(ra);
     }
     void readySerial() {
+        if (!sk)
+            return;
         for(;;) {
             char c;
             if (!sp.getChar(&c))
